@@ -11,4 +11,3 @@ fi
 # magic
 #   take the first $n bytes from /dev/random and display them as %2x
 hexdump -v -n $n  -e '/1 "%02x"' /dev/random
-echo

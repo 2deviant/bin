@@ -14,4 +14,3 @@ fi
 #   remove non-alphanumeric characters: / | = and newline
 #   take $n bytes of the result
 head -c $n /dev/random | base64 | tr -d "/+=\n" | head -c $n
-echo
