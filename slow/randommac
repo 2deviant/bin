@@ -7,8 +7,8 @@ export system=`uname`
 if [[ $1 =~ ^[0-9a-z]+$ ]]; then
     # different commands for different systems
     case "$system" in
-        Linux)  echo sudo ifconfig $1 hw ether `randomhex 6` ;;
-        Darwin) echo sudo ifconfig $1    ether `randomhex 6` ;;
+        Linux)  sudo ifconfig $1 hw ether `randomhex 6` ;;
+        Darwin) sudo ifconfig $1    ether `randomhex 6` ;;
         *)      echo "$system is not supported" ;;
     esac
 else
