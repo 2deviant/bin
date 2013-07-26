@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# number of random bytes, default is 10
+export n=10
+
+# if the byte count is present and makes sense, use it
+if [[ $1 =~ ^[0-9]+$ ]]; then
+    export n=$1
+fi
+
+# magic
+#   take the first $n bytes from /dev/random and display them as %2x
+hexdump -v -n $n  -e '/1 "%02x"' /dev/random
+echo
