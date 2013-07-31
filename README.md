@@ -7,7 +7,7 @@ The purpose of this repository is part archival and part expository.
 
 ## Structure
 The repository is split into two directories: `slow` and `fast`.  `slow` directory
-contains utilities written primarily in bash harnessing the standard Linux/Darwin commands
+contains utilities written primarily in bash, harnessing the standard Linux/Darwin commands
 and software. ``fast`` directory contains utilities of identical function but written in C,
 trading the elegance of the shell code for performance.  Not all utilities have *fast* versions.
 
