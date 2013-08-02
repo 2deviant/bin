@@ -6,3 +6,6 @@ all:
 		$(COMPILER) $(OPTIONS) $$i.c -o $$i ; \
 		echo Compiling $$i.c ... ; \
 	done
+clean:
+	- rm *~
+	- rm $(FILES)
