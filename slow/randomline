@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# random integer
+i=`randomdec 5`
+
+# if a valid file is supplied, use it
+if [ -f "$1" ]
+then
+    # number of lines in the given file
+    n=`wc -l $1 | tr -d "[:alpha:] "`
+
+    # magic
+    #   get the lines upto the randomly-selected line (i % n + 1)
+    #   then just take the last one ($line)
+    head -$((i%n+1)) $1 | tail -1
+
+#if not, attempt to use the standard input
+else
+    # line counter
+    n=0
+
+    # loop through the lines
+    while read LINE
+    do
+        # store the line
+        lines[$n]=${LINE}
+
+        # count the line
+        n=$((n+1))
+    done
+
+    # display the random line
+    echo ${lines[$((i%n))]}
+fi
