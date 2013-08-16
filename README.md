@@ -26,6 +26,13 @@ trading the elegance of the shell code for performance.  Not all utilities have 
     the number of bytes argument is
     absent, it is assumed to be 10.
 
+* **`randomdec [ number of bytes ]`**
+
+    Return a random integer.
+    letters of both capitalizations.  If
+    the number of bytes argument is
+    absent, it is assumed to be 5.
+
 * **`randommac [ interface ]`**
 
     Change the MAC address of a given
