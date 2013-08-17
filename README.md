@@ -53,7 +53,7 @@ in a directory within $PATH.
 * **`randommac [ interface ]`**
 
     Change the MAC address of a given
-    interface to a random sequence.
+    interface to a random sequence and hostname of the machine to UNKNOWN.
     
     **Example:**
     ```bash
