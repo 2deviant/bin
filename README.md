@@ -11,6 +11,10 @@ contains utilities written primarily in bash, harnessing the standard Linux/Darw
 and software. ``fast`` directory contains utilities of identical function but written in C,
 trading the elegance of the shell code for performance.  Not all utilities have *fast* versions.
 
+## Function
+The utilities in this package are interdependent.  It is best for them to reside
+in a directory within $PATH.
+
 ## Utilities
 
 * **`randomhex [ number of bytes ]`**
