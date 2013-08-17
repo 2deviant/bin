@@ -26,12 +26,11 @@ trading the elegance of the shell code for performance.  Not all utilities have 
     the number of bytes argument is
     absent, it is assumed to be 10.
 
-* **`randomdec [ number of bytes ]`**
+* **`randomdec [ number of digits ]`**
 
-    Return a random integer.
-    letters of both capitalizations.  If
-    the number of bytes argument is
-    absent, it is assumed to be 5.
+    Return a random integer. If
+    the number of digits argument is
+    absent, it is assumed to be 10.
 
 * **`randommac [ interface ]`**
 
