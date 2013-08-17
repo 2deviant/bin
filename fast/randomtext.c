@@ -15,10 +15,10 @@ int main(int argc, char *argv[]) {
     int n;
 
     // randomness goes here
-    char random[BUFFER_SIZE];
+    unsigned char random[BUFFER_SIZE];
 
     // acceptable output characters
-    char text[] = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+    unsigned char text[] = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
 
     // if the argument is missing
     if(argc <= 1)
@@ -43,13 +43,19 @@ int main(int argc, char *argv[]) {
         // read some random bytes
         fread(&random, BUFFER_SIZE, 1, rnd);
 
-        // convert them to HEX and print to STDOUT
+        // convert them to alphanumeric characters and dump to STDOUT
         for(i=0; i < (n > BUFFER_SIZE ? BUFFER_SIZE : n); i++)
-            printf("%c", text[(unsigned short)random[i] % TEXT_CHAR_COUNT]);
+            // chop off random numbers after 248 to insure uniform distribution
+            if(random[i] < 4*TEXT_CHAR_COUNT)
+                printf("%c", text[random[i] % TEXT_CHAR_COUNT]);
+            else
+                // account for the ignored random number
+                n++;
 
         // decrement the counter and continue
         n -= BUFFER_SIZE;
     }
 
+    fclose(rnd);
     return 0;
 }
