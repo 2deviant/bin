@@ -43,8 +43,8 @@ fi
 #   If i < 60000 then use it, otherwise choose again
 #   Random number = i % 10000
 #
-# Resulting random number will be in [0, 9999].  If padded with zeros will
-# contain four, high-quality random digits.
+# Resulting random number is in [0, 9999].  If padded with zeros will contain
+# four, high-quality random digits.
 
 # Method used here utilizes 4-byte integers.
 
