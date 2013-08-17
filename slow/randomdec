@@ -1,10 +1,73 @@
 #!/bin/bash
 
-# number of random bytes, default is 5
-n=5
+# number of random digits, default is 10
+n=10
 
 # if the byte count is present and makes sense, use it
 if [[ $1 =~ ^[0-9]+$ ]]; then
     n=$1
 fi
-hexdump -v -n $n -e '"%u"' /dev/random
+
+# Unfortunately, dumping [large] random decimal numbers is not nearly as trivial
+# as dumping their hexadecimal counterparts because the computer dreams in
+# binary, not decimal.
+
+# Simply concatenating decimal representations of bytes doesn't produce random
+# numbers.  Since the decimal value of a byte ranges from 0 to 255, at the very
+# least the first digit of this "random" number is most likely to be to be 1.
+# Assuming that all numbers [0, 255] have equal probability of showing up,
+# [100, 199], [10, 19], and 1 (43%) have 1 as the first digit, [200, 255],
+# [20, 29], and 2 (26%) have 2, and the rest of the numbers [3, 9] will appear
+# with about 4% probability.  While this fact doesn't make the individual bytes
+# any less random within their respective ranges, concatenating decimal
+# representations thereof skews the distribution.  This can be easily visualized
+# by generating a few thousand random, decimal, 8-bit numbers, concatenating
+# them, and plotting the result as an x-y scatter plot.
+
+# Increasing the number of bytes per integer reduces this effect.  For example:
+# two-byte integers are [0, 65535].  Without performing a detailed analysis,
+# it is clear that numbers [7, 9] have a far lesser chance of appearing as the
+# first digit than numbers [1, 6].
+
+# Strictly speaking, even selecting each digit at random using the /dev/random
+# will not produce decimal numbers of uniform distribution because there are
+# ten digits and 256 (or 65536, etc.) available random values.  Folding the
+# range with a remainder after division operation will not produce uniform
+# distribution either because 256 -- or any other power of 2 -- is not divisible
+# by 10.  That is, random(0,255) % 10 does not produce a uniform distribution.
+
+# One solution to simply discard the values outside of the range [0, 10^n].  For
+# example:
+#
+#   Choose a 2-byte integer i
+#   If i < 60000 then use it, otherwise choose again
+#   Random number = i % 10000
+#
+# Resulting random number will be in [0, 9999].  If padded with zeros will
+# contain four, high-quality random digits.
+
+# Method used here utilizes 4-byte integers.
+
+# loop until the random number is below the desired length
+while [ ${#random} -lt $n ]
+do
+    # choose a random number from [0, 4294967295]
+    i=`hexdump -v -n 4 -e '"%u"' /dev/random`
+
+    # if the number is in [0, 3999999999], use it
+    if [ $i -lt 4000000000 ]
+    then
+        # effectively, remove the first digit of $i
+        # then concatenate it to the random number
+        random=$random$(printf "%09d" $((i%1000000000)))
+    fi
+done
+
+# output the random number upto a target length
+echo -n ${random:0:$n}
+
+# Another method is to use randomhex and remove all letters, like so:
+#
+#   randomhex 100 | tr -d "abcdef"
+#
+# The length of the resulting decimal number is less predictable.
