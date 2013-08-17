@@ -40,7 +40,7 @@ in a directory within $PATH.
 
     Return a random line from a supplied file.
     If the file is not readable, e.g. not supplied, an attempt to
-    read fromcthe STDIN is made.
+    read from the STDIN is made.
 
     **Example:**
     ```bash
