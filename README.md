@@ -32,6 +32,20 @@ trading the elegance of the shell code for performance.  Not all utilities have 
     the number of digits argument is
     absent, it is assumed to be 10.
 
+* **`randomline [ file ]`**
+
+    Return a random line from a supplied file.
+    If the file is not supplied, an attempt to
+    read fro mthe STDIN is made.
+
+    **Example:**
+    ```bash
+    randomline hostnames.txt
+    ls | randomline
+    randomline < hostanames.txt
+    ```
+    Are all valid.
+
 * **`randommac [ interface ]`**
 
     Change the MAC address of a given
