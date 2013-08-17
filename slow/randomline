@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # random integer
-i=`randomdec 5`
+i=`randomdec`
 
 # if a valid file is supplied, use it
 if [ -f "$1" ]
 then
     # number of lines in the given file
-    n=`wc -l $1 | tr -d "[:alpha:] "`
+    n=`wc -l $1 | tr -s " " | cut -d " " -f 2`
 
     # magic
     #   get the lines upto the randomly-selected line (i % n + 1)
