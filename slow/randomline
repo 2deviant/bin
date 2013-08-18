@@ -7,7 +7,7 @@ i=`randomdec 8`
 if [ -f "$1" ]
 then
     # number of lines in the given file
-    n=`wc -l $1 | tr -s " " | cut -d " " -f 2`
+    n=`wc -l $1 | awk '{print \$1}'`
 
     # magic
     #   get the lines upto the randomly-selected line (i % n + 1)
