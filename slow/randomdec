@@ -59,7 +59,14 @@ do
     then
         # effectively, remove the first digit of $i
         # then concatenate it to the random number
-        random=$random$(printf "%09d" $((i%1000000000)))
+        
+        # the fist digit must never be zero
+        if [ -z $random ]
+        then
+            random=$((i%1000000000))
+        else
+            random=$random$(printf "%09d" $((i%1000000000)))
+        fi
     fi
 done
 
