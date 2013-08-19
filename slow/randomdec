@@ -70,7 +70,7 @@ do
     fi
 done
 
-# output the random number upto a target length
+# output the random number upto the target length
 echo -n ${random:0:$n}
 
 # Another method is to use randomhex and remove all letters, like so:
