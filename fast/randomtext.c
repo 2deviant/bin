@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
 
         // convert them to alphanumeric characters and dump to STDOUT
         for(i=0; i < (n > BUFFER_SIZE ? BUFFER_SIZE : n); i++)
-            // chop off random numbers after 248 to insure uniform distribution
+            // chop off random numbers after 248 to ensure uniform distribution
             if(random[i] < 4*TEXT_CHAR_COUNT)
                 printf("%c", text[random[i] % TEXT_CHAR_COUNT]);
             else
