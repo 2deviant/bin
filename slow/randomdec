@@ -44,11 +44,11 @@ fi
 #   Random number = i % 10000
 #
 # Resulting random number is in [0, 9999].  If padded with zeros will contain
-# four, high-quality random digits.
+# four high-quality random digits.
 
 # Method used here utilizes 4-byte integers.
 
-# loop until the random number is below the desired length
+# loop while the random number is below the desired length
 while [ ${#random} -lt $n ]
 do
     # choose a random number from [0, 4294967295]
@@ -59,22 +59,10 @@ do
     then
         # effectively, remove the first digit of $i
         # then concatenate it to the random number
-        
-        # the fist digit must never be zero
-        if [ -z $random ]
-        then
-            random=$((i%1000000000))
-        else
-            random=$random$(printf "%09d" $((i%1000000000)))
-        fi
+        random=$random$(printf "%09d" $((i%1000000000)))
     fi
 done
 
 # output the random number upto the target length
 echo -n ${random:0:$n}
 
-# Another method is to use randomhex and remove all letters, like so:
-#
-#   randomhex 100 | tr -d "abcdef"
-#
-# The length of the resulting decimal number is less predictable.
