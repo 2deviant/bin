@@ -10,8 +10,8 @@ fi
 
 # A simpler solution is to use randomhex-like generation and remove the letters.
 # This works because it is equivalent to range-truncation: if numbers in [a, b]
-# are of uniform distribution, then numbers in [a, c], where c < b, are also of
-# uniform distribution. 
+# are of uniform distribution, then numbers in [a, c], where a < c < b, are also
+# of uniform distribution. 
 
 # loop while the random number is below the desired length
 while [ ${#random} -lt $n ]
