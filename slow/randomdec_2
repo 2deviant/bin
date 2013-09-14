@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# number of random digits, default is 10
+n=10
+
+# if the byte count is present and makes sense, use it
+if [[ $1 =~ ^[0-9]+$ ]]; then
+    n=$1
+fi
+
+# A simpler solution is to use randomhex-like generation and remove the letters.
+# This works because it is equivalent to range-truncation: if numbers in [a, b]
+# are of uniform distribution, then numbers in [a, c], where c < b, are also of
+# uniform distribution. 
+
+# loop while the random number is below the desired length
+while [ ${#random} -lt $n ]
+do
+    # magic
+    #   take the first $n bytes from /dev/random and display them as %2x
+    #   remove 'abcdef' to make it look decimal
+    random=`hexdump -v -n $n  -e '/1 "%02x"' /dev/random | tr -d "a-f"`
+done
+
+# output the random number upto the target length
+echo -n ${random:0:$n}
