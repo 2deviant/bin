@@ -3,7 +3,9 @@ A collection of simple Linux/Darwin command line utilities I've written and used
 years but never formalized, until now.
 
 ## Purpose
-The purpose of this repository is part archival and part expository.
+The purpose of this repository is part archival and part expository.  They are
+not the most efficient ways of doing things but, certainlyo one of the most
+instructive.
 
 ## Structure
 The repository is split into two directories: `slow` and `fast`.  `slow` directory
