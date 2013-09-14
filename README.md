@@ -4,7 +4,7 @@ years but never formalized, until now.
 
 ## Purpose
 The purpose of this repository is part archival and part expository.  They are
-not the most efficient ways of doing things but, certainlyo one of the most
+not the most efficient ways of doing things but, certainly one of the most
 instructive.
 
 ## Structure
@@ -12,6 +12,9 @@ The repository is split into two directories: `slow` and `fast`.  `slow` directo
 contains utilities written primarily in bash, harnessing the standard Linux/Darwin commands
 and software. ``fast`` directory contains utilities of identical function but written in C,
 trading the elegance of the shell code for performance.  Not all utilities have *fast* versions.
+
+Some files have `_n`, where `n` (is an integer) after their name, which implies
+a different implementation of the same function.
 
 ## Function
 The utilities in this package are interdependent.  It is best for them to reside
