@@ -16,7 +16,6 @@ trading the elegance of the shell code for performance.  Not all utilities have 
 Some files have `_n` (where `n` is an integer) after their name, which implies
 a different implementation of the same function.
 
-## Function
 The utilities in this package are interdependent.  It is best for them to reside
 in a directory within $PATH.
 
@@ -36,6 +35,14 @@ in a directory within $PATH.
     absent, it is assumed to be 10.
 
 * **`randomdec [ number of digits ]`**
+
+    Return a random integer. If
+    the number of digits argument is
+    absent, it is assumed to be 10.
+
+* **`randomdec_2 [ number of digits ]`**
+
+    Faster version of `randomdec`.
 
     Return a random integer. If
     the number of digits argument is
