@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# number of random bytes, default is 10
+n=10
+
+# if the byte count is present and makes sense, use it
+if [[ $1 =~ ^[0-9]+$ ]]; then
+    n=$1
+fi
+
+# magic
+#   take the first $n random bytes
+#   convert them to base64
+#   remove non-alphanumeric characters: / | = and newline
+#   take $n bytes of the result
+openssl rand -base64 $n | tr -d "/+=\n" | head -c $n
