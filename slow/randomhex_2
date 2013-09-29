@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# number of random bytes, default is 10
+n=10
+
+# if the byte count is present and makes sense, use it
+if [[ $1 =~ ^[0-9]+$ ]]; then
+    n=$1
+fi
+
+# use OpenSSL, which is installed by dafault on a variety of systems
+openssl rand -hex $n
+
