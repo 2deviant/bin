@@ -8,9 +8,19 @@ if [[ $1 =~ ^[0-9]+$ ]]; then
     n=$1
 fi
 
-# magic
-#   take the first $n bytes from /dev/random
-#   convert them to base64
-#   remove non-alphanumeric characters: / | = and newline
-#   take $n bytes of the result
-head -c $n /dev/random | base64 | tr -d "/+=\n" | head -c $n
+# loop while the random number is below the desired length
+while [ ${#random} -lt $n ]
+do
+        # get a random alphanumeric string
+        #   take $n bytes from /dev/urandom
+        #   print only the printable characters
+        #   remove all non-alphanumeric characters
+        #   append it to the existing random string
+        random=$random`hexdump -v -n $(($n*5))  -e '"%_p"' /dev/urandom | tr -Cd "[:alnum:]"`
+        # $n*5 random characters are acquired because most have to be discarded
+        # /dev/urandom, as opposed to /dev/random, is used so to speed up the execution,
+        # see `man urandom` for more information
+done
+# output the random string upto the target length
+echo -n ${random:0:$n}
+
