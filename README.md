@@ -30,7 +30,7 @@ it is assumed to be 10.
 ___
 ### randomhex_2
 ```bash
-randomhex [ number of bytes ]
+randomhex_2 [ number of bytes ]
 ```
 An OpenSSL-driven version of the above.
 ___
@@ -41,6 +41,12 @@ randomtext [ number of bytes ]
 Return random text using digits and letters of both capitalizations.  If
 the number of bytes argument is
 absent, it is assumed to be 10.
+___
+### randomtext_2
+```bash
+randomtext_2 [ number of bytes ]
+```
+An OpenSSL-driven version of the above.
 ___
 ### randomdec
 ```bash
