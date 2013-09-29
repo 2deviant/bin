@@ -17,9 +17,9 @@ fi
 while [ ${#random} -lt $n ]
 do
     # magic
-    #   take the first $n bytes from /dev/random and display them as %2x
+    #   take the first $n bytes from /dev/urandom and display them as %2x
     #   remove 'abcdef' to make it look decimal
-    random=`hexdump -v -n $n  -e '/1 "%02x"' /dev/random | tr -d "a-f"`
+    random=`hexdump -v -n $n  -e '/1 "%02x"' /dev/urandom | tr -d "a-f"`
 done
 
 # output the random number upto the target length

@@ -52,7 +52,9 @@ fi
 while [ ${#random} -lt $n ]
 do
     # choose a random number from [0, 4294967295]
-    i=`hexdump -v -n 4 -e '"%u"' /dev/random`
+    i=`hexdump -v -n 4 -e '"%u"' /dev/urandom`
+    # /dev/urandom, as opposed to /dev/random, is used so to speed up the
+    # execution see `man urandom` for more information
 
     # if the number is in [0, 3999999999], use it
     if [ $i -lt 4000000000 ]

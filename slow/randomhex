@@ -9,5 +9,7 @@ if [[ $1 =~ ^[0-9]+$ ]]; then
 fi
 
 # magic
-#   take the first $n bytes from /dev/random and display them as %2x
-hexdump -v -n $n  -e '/1 "%02x"' /dev/random
+#   take the first $n bytes from /dev/urandom and display them as %2x
+hexdump -v -n $n  -e '/1 "%02x"' /dev/urandom
+# /dev/urandom, as opposed to /dev/random, is used so to speed up the execution,
+# see `man urandom` for more information
