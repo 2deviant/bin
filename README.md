@@ -28,6 +28,12 @@ randomhex [ number of bytes ]
 Return random bytes in hex.  If the number of bytes argument is absent,
 it is assumed to be 10.
 ___
+### randomhex_2
+```bash
+randomhex [ number of bytes ]
+```
+An OpenSSL-driven version of the above.
+___
 ### randomtext
 ```bash
 randomtext [ number of bytes ]
