@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
     }
 
     // tap into the randomness
-    FILE *rnd = fopen("/dev/random","r");
+    FILE *rnd = fopen("/dev/urandom","r");
 
     // loop until the requested byte count has been achieved
     while(n > 0) {
