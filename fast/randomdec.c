@@ -5,14 +5,15 @@
 #define MINIMUM_OUTPUT  1
 #define MAXIMUM_OUTPUT  65536
 #define NUMBER_LENGTH   9
+#define integer         unsigned int
 
 // self-explanatory
-unsigned int sq(unsigned int x) {
+integer sq(integer x) {
     return x*x;
 }
 
 // self-explanatory
-unsigned int pow10(unsigned int n) {
+integer pow10(integer n) {
 
     // the end
     if(n == 1)
@@ -31,34 +32,36 @@ int main(int argc, char *argv[]) {
     // counter variable
     int i;
 
-    // number of random bytes to pull
+    // number of random [data type] to pull
     int n;
 
     // number of digits
     int d;
 
     // randomness goes here
-    unsigned int random[BUFFER_SIZE];
+    integer random[BUFFER_SIZE];
 
     // if the argument is missing
-    if(argc <= 1)
+    if(argc <= 1) {
         // revert to default
-        n = DEFAULT_OUTPUT;
+        d = DEFAULT_OUTPUT;
+        n = DEFAULT_OUTPUT / NUMBER_LENGTH + 1;
+    }
     // otherwise attempt to read it
     else {
         // convert the string to an integer
         sscanf(argv[1], "%d", &n);
 
         // save the requested digit count
-        d = (unsigned int)n;
+        d = (integer)n;
 
-        // divide by 9 (each random "number" is 9 digits long)
+        // divide by 9 (each random number is 9 digits long)
         n = n / NUMBER_LENGTH + 1;
-
+        
         // make sure it makes sense
         if(n < MINIMUM_OUTPUT || n > MAXIMUM_OUTPUT)
             // else use the default again
-            n = DEFAULT_OUTPUT;
+            n = DEFAULT_OUTPUT / NUMBER_LENGTH + 1;
     }
 
     // tap into the randomness
@@ -67,12 +70,12 @@ int main(int argc, char *argv[]) {
     // loop until the requested byte count has been achieved
     while(n > 0) {
         // read some random bytes
-        fread(&random, BUFFER_SIZE, sizeof(unsigned int), rnd);
+        fread(&random, BUFFER_SIZE, sizeof(integer), rnd);
 
         // convert them to alphanumeric characters and dump to STDOUT
-        for(i=0; i < (n > BUFFER_SIZE ? BUFFER_SIZE : n); i++)
+        for(i=0; i < (n > BUFFER_SIZE ? BUFFER_SIZE : n) && d > 0; i++)
             // if the number is in [0, 3999999999], use it
-            if(random[i] < (unsigned int)4000000000) {
+            if(random[i] < (integer)4000000000) {
                 
                 /*
                  * effectively, remove the first digit of random[i]
@@ -91,7 +94,7 @@ int main(int argc, char *argv[]) {
                 }
                 // otherwise just print out the usual
                 else
-                    printf("%09u", random[i] % ((unsigned int)1000000000));
+                    printf("%09u", random[i] % ((integer)1000000000));
 
                 // take account of the length of the number outputted so far
                 d -= NUMBER_LENGTH;
