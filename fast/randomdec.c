@@ -13,7 +13,7 @@ integer sq(integer x) {
 }
 
 // self-explanatory
-integer pow10(integer n) {
+integer power10(integer n) {
 
     // the end
     if(n == 1)
@@ -21,10 +21,10 @@ integer pow10(integer n) {
 
     // odd power
     if(n%2)
-        return 10*sq(pow10((n-1)/2));
+        return 10*sq(power10((n-1)/2));
 
     // even power
-    return sq(pow10(n/2));
+    return sq(power10(n/2));
 }
 
 int main(int argc, char *argv[]) {
@@ -45,23 +45,23 @@ int main(int argc, char *argv[]) {
     if(argc <= 1) {
         // revert to default
         d = DEFAULT_OUTPUT;
-        n = DEFAULT_OUTPUT / NUMBER_LENGTH + 1;
+        n = d / NUMBER_LENGTH + 1;
     }
     // otherwise attempt to read it
     else {
         // convert the string to an integer
-        sscanf(argv[1], "%d", &n);
+        sscanf(argv[1], "%d", &d);
 
-        // save the requested digit count
-        d = (integer)n;
+        // divide by NUMBER_LENGTH
+        // each random number is NUMBER_LENGTH digits long
+        n = d / NUMBER_LENGTH + 1;
 
-        // divide by 9 (each random number is 9 digits long)
-        n = n / NUMBER_LENGTH + 1;
-        
         // make sure it makes sense
-        if(n < MINIMUM_OUTPUT || n > MAXIMUM_OUTPUT)
+        if(n < MINIMUM_OUTPUT || n > MAXIMUM_OUTPUT || d < 0) {
             // else use the default again
-            n = DEFAULT_OUTPUT / NUMBER_LENGTH + 1;
+            d = DEFAULT_OUTPUT;
+            n = d / NUMBER_LENGTH + 1;
+        }
     }
 
     // tap into the randomness
@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
         // convert them to alphanumeric characters and dump to STDOUT
         for(i=0; i < (n > BUFFER_SIZE ? BUFFER_SIZE : n) && d > 0; i++)
             // if the number is in [0, 3999999999], use it
-            if(random[i] < (integer)4000000000) {
+            if(random[i] < 4000000000u) {
                 
                 /*
                  * effectively, remove the first digit of random[i]
@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
                     char format[8];
                     sprintf((char *)format, "%%0%du", d);
                     // print out th remaining digits
-                    printf(format, random[i] % pow10(d));
+                    printf(format, random[i] % power10(d));
                 }
                 // otherwise just print out the usual
                 else
