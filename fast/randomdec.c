@@ -18,12 +18,12 @@ unsigned int pow10(unsigned int n) {
     if(n == 1)
         return 10;
 
-    // even power
-    if(!(n%2))
-        return sq(pow10(n/2));
-
     // odd power
-    return 10*sq(pow10((n-1)/2));
+    if(n%2)
+        return 10*sq(pow10((n-1)/2));
+
+    // even power
+    return sq(pow10(n/2));
 }
 
 int main(int argc, char *argv[]) {
