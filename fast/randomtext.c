@@ -2,7 +2,7 @@
 
 #define BUFFER_SIZE     1024
 #define DEFAULT_OUTPUT  10
-#define MINIMUM_OUTPUT  1
+#define MINIMUM_OUTPUT  0
 #define MAXIMUM_OUTPUT  65536
 #define TEXT_CHAR_COUNT 62
 
