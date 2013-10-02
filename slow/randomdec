@@ -46,10 +46,10 @@ fi
 # Resulting random number is in [0, 9999].  If padded with zeros will contain
 # four high-quality random digits.
 
-# Method used here utilizes 4-byte integers.
+# Method used here utilizes 4-byte integers.  It is EXCRUCIATINGLY SLOW.
 
 # loop while the random number is below the desired length
-while [ ${#random} -lt $n ]
+while [ $n -gt 0 ]
 do
     # choose a random number from [0, 4294967295]
     i=`hexdump -v -n 4 -e '"%u"' /dev/urandom`
@@ -60,11 +60,16 @@ do
     if [ $i -lt 4000000000 ]
     then
         # effectively, remove the first digit of $i
-        # then concatenate it to the random number
-        random=$random$(printf "%09d" $((i%1000000000)))
+        # and print it out as a 9-digit integer
+        chunk=$(printf "%09d" $((i%1000000000)))
+        if [ $n -gt 8 ]
+        then
+            echo -n $chunk
+        else
+            echo -n ${chunk:0:$n}
+        fi
+
+        # count down the number length
+        n=$((n-9))
     fi
 done
-
-# output the random number upto the target length
-echo -n ${random:0:$n}
-
