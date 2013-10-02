@@ -5,7 +5,8 @@ for years but never formalized, until now.
 ## Purpose
 The purpose of this repository is part archival and part expository.  They are
 not the most efficient ways of doing things but, certainly one of the most
-instructive.
+instructive.  The code is endowed with generous amount of comments and
+explanations.
 
 ## Structure
 The repository is split into two directories: `slow` and `fast`.  `slow`
