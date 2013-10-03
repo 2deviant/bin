@@ -16,9 +16,10 @@ identical function but written in C, trading the elegance of the shell code for
 performance.  Not all utilities have *fast* versions.
 
 Some files have `_n` (where `n` is an integer) after their name, which implies
-a different implementation of the same function.
+a different implementation of the same function, typically faster or simpler or
+both.
 
-The utilities in this package are interdependent.  It is best for them to reside
+Some utilities in this package are interdependent.  It is best for all to reside
 in a directory within $PATH.
 
 ## Utilities
@@ -26,45 +27,37 @@ in a directory within $PATH.
 ```bash
 randomhex [ number of bytes ]
 ```
-Return random bytes in hex.  If the number of bytes argument is absent,
-it is assumed to be 10.
+Return a random hexadecimal number.  Default number of bytes is 10.
 ___
 ### randomhex_2
 ```bash
 randomhex_2 [ number of bytes ]
 ```
-An OpenSSL-driven version of the above.
+A faster, OpenSSL-driven version of the above.
 ___
 ### randomtext
 ```bash
 randomtext [ number of bytes ]
 ```
-Return random text using digits and letters of both capitalizations.  If
-the number of bytes argument is
-absent, it is assumed to be 10.
+Return random text using digits and letters of both capitalizations.
 ___
 ### randomtext_2
 ```bash
 randomtext_2 [ number of bytes ]
 ```
-An OpenSSL-driven version of the above.
+A faster, OpenSSL-driven version of the above.
 ___
 ### randomdec
 ```bash
 randomdec [ number of digits ]
 ```
-Return a random integer. If the number of digits argument is
-absent, it is assumed to be 10.
+Return a random integer.
 ___ 
 ### randomdec_2
 ```bash
 randomdec_2 [ number of digits ]
 ```
-Faster version of `randomdec`.
-
-Return a random integer. If
-the number of digits argument is
-absent, it is assumed to be 10.
+A much faster version of the above.
 ___
 ### randomline
 ```bash
