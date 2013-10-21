@@ -9,7 +9,7 @@ if [[ $1 =~ ^[0-9]+$ ]]; then
 fi
 
 # Unfortunately, dumping [large] random decimal numbers is not nearly as trivial
-# as dumping their hexadecimal counterparts because the computer dreams in
+# as dumping their hexadecimal counterparts because computers dream in
 # binary, not decimal.
 
 # Simply concatenating decimal representations of bytes doesn't produce random
