@@ -17,7 +17,7 @@ while(<>) {
         # and set the count to the count of this datum
         and $count = $numbers->{$_} 
     # for every number in a line
-    for split /\s+/, $_;
+    for split /\s+/;
 }
 
 # print out the mode
