@@ -76,4 +76,15 @@ randommac eth1
 ```
 Change the MAC address of a given
 interface to a random sequence and the hostname of the machine to UNKNOWN.
+___
+### min, max, mode
+```bash
+min < numbers.txt
+ls -l | awk '{print $5}' | max
+last | awk '{print $1}' | ./mode
+```
+Compute the corresponding statistic of a list of numbers taken from the standard
+input.  The numbers can be separated by a mixture of spaces, tabs, and newlines.
+
+`mode` takes any data, not just numbers.
 
