@@ -6,7 +6,7 @@ my $s = 0;
 # loop until the end of standard input
 while(<>) {
     # add all numbers in a line
-    $s += $_ for split /\s+/ while <>;
+    $s += $_ for split /\s+/;
 }
 
 # print out the sum
