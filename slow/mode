@@ -8,7 +8,7 @@ my ($mode, $count) = (0, 0);
 my $numbers;
 
 
-# loop until the end of the file
+# loop until the end of standard input
 while(<>) {
     # if number of times $_ has occurred is more than any previous datum
     ++$numbers->{$_} > $count
