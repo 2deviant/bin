@@ -4,7 +4,7 @@ use strict;
 # counters
 my ($mode, $count) = (0, 0);
 
-# associative array
+# hash
 my $numbers;
 
 
