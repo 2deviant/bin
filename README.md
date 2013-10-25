@@ -75,13 +75,15 @@ randommac [ interface ]
 randommac eth1
 ```
 Change the MAC address of a given
-interface to a random sequence and the hostname of the machine to UNKNOWN.
+interface to a random sequence and the hostname of the machine to `UNKNOWN`.
 ___
-### min, max, mode
+### min, max, mode, mean, add
 ```bash
 min < numbers.txt
 ls -l | awk '{print $5}' | max
-last | awk '{print $1}' | ./mode
+ls -l | awk '{print $5}' | add
+last | awk '{print $1}' | mode
+mean < numbers.txt
 ```
 Compute the corresponding statistic of a list of numbers taken from the standard
 input.  The numbers can be separated by a mixture of spaces, tabs, and newlines.
