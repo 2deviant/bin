@@ -1,6 +1,6 @@
 COMPILER=gcc
 OPTIONS=-Wall -O3
-FILES=randomhex randomtext randomdec
+FILES=randomhex randomtext randomdec add
 all:
 	for i in $(FILES); do \
 		$(COMPILER) $(OPTIONS) $$i.c -o $$i ; \
