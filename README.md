@@ -9,13 +9,13 @@ instructive.  The code is endowed with generous amount of comments and
 explanations.
 
 ## Structure
-The repository is split into two directories: `slow` and `fast`.  `slow`
+The repository is split into two directories: **slow** and **fast**.  **slow**
 directory contains utilities written primarily in bash and Perl, harnessing the
-standard Linux/Darwin commands and software. ``fast`` directory contains
+standard Linux/Darwin commands and software. `**fast**` directory contains
 utilities of identical function but written in C, trading the elegance of the
 shell code for performance.  Not all utilities have *fast* versions.
 
-Some files have `_n` (where `n` is an integer) after their name, which implies
+Some files have **_n** (where **n** is an integer) after their name, which implies
 a different implementation of the same function, typically faster or simpler or
 both.
 
@@ -75,7 +75,7 @@ randommac [ interface ]
 randommac eth1
 ```
 Change the MAC address of a given
-interface to a random sequence and the hostname of the machine to `UNKNOWN`.
+interface to a random sequence and the hostname of the machine to **UNKNOWN**.
 ___
 ### min, max, add, mean, median, mode
 ```bash
@@ -87,5 +87,5 @@ last | awk '{print $1}' | mode
 Compute the corresponding statistic of a list of numbers taken from the standard
 input.  The numbers can be separated by a mixture of spaces, tabs, and newlines.
 
-`mode` takes any data, not just numbers.
+**mode** takes any data, not just numbers.
 
