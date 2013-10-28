@@ -20,7 +20,7 @@ a different implementation of the same function, typically faster or simpler or
 both.
 
 Some utilities in this package are interdependent.  It is best for all to reside
-in a directory within $PATH.
+in a directory within **$PATH**.
 
 ## Utilities
 ### randomhex
