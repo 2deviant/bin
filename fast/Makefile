@@ -1,6 +1,6 @@
 COMPILER=gcc
 OPTIONS=-Wall -O3
-FILES=randomhex randomtext randomdec add
+FILES=randomhex randomtext randomdec add min max mean
 all:
 	for i in $(FILES); do \
 		$(COMPILER) $(OPTIONS) $$i.c -o $$i ; \
