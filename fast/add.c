@@ -3,7 +3,7 @@
 int main(int argc, char *argv[]) {
 
     FILE *f;
-    long double sum = 0, x;
+    long double sum = 0, x = 0;
 
     // if the file name is not specified, attempt to read from the standard
     // input
@@ -12,16 +12,14 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    while(1) {
+    while(!feof(f)) {
 
-        // read the next number
+        // increment the sum
+        sum += x;
+
+        // read the number
         fscanf(f, "%Lf", &x);
 
-        // if the end of the file has been reached, stop
-        if(feof(f))
-            break;
-
-        sum += x;
     }
 
     printf("%.10Lg\n", sum);
