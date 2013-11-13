@@ -3,9 +3,24 @@
 # number of random digits, default is 10
 n=10
 
+# no leading zero flag
+if [ "$1" = "-0" ]; then
+    # printf format string (no leading zero)
+    leading_zero="%d"
+
+    # use ARGV[2] for number of random digits
+    count=$2
+else
+    # printf format string (leading zero)
+    leading_zero="%09d"
+
+    # otherwise use ARGV[1]
+    count=$1
+fi
+
 # if the byte count is present and makes sense, use it
-if [[ $1 =~ ^[0-9]+$ ]]; then
-    n=$1
+if [[ $count =~ ^[0-9]+$ ]]; then
+    n=$count
 fi
 
 # Unfortunately, dumping [large] random decimal numbers is not nearly as trivial
@@ -61,7 +76,9 @@ do
     then
         # effectively, remove the first digit of $i
         # and print it out as a 9-digit integer
-        chunk=$(printf "%09d" $((i%1000000000)))
+        chunk=$(printf $leading_zero $((i%1000000000)))
+        # second and subsequent chunks have leading zeros
+        leading_zero="%09d"
         if [ $n -gt 8 ]
         then
             echo -n $chunk
