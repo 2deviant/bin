@@ -1,11 +1,27 @@
 COMPILER=gcc
 OPTIONS=-Wall -O3
-FILES=randomhex randomtext randomdec add min max mean
-all:
-	for i in $(FILES); do \
-		$(COMPILER) $(OPTIONS) $$i.c -o $$i ; \
-		echo Compiling $$i.c ... ; \
-	done
+all: randomhex randomtext randomdec add min max mean
+
+randomhex: randomhex.c
+	 $(COMPILER) $(OPTIONS) randomhex.c -o randomhex
+
+randomdec: randomdec.c
+	 $(COMPILER) $(OPTIONS) randomdec.c -o randomdec
+
+randomtext: randomtext.c
+	 $(COMPILER) $(OPTIONS) randomtext.c -o randomtext
+
+add: add.c
+	 $(COMPILER) $(OPTIONS) add.c -o add
+
+min: min.c
+	 $(COMPILER) $(OPTIONS) min.c -o min
+
+max: max.c
+	 $(COMPILER) $(OPTIONS) max.c -o max
+
+mean: mean.c
+	 $(COMPILER) $(OPTIONS) mean.c -o mean
+
 clean:
-	- rm *~
-	- rm $(FILES)
+	- rm randomhex randomtext randomdec add min max mean
