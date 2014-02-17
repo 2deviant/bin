@@ -21,7 +21,7 @@ then
 #if not, attempt to use the standard input
 else
     # loop through the lines
-    while read LINE
+    while read -r LINE
     do
         # store the line
         css=${css}${LINE}
