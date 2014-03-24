@@ -88,4 +88,24 @@ Compute the corresponding statistic of a list of numbers taken from the standard
 input.  The numbers can be separated by a mixture of spaces, tabs, and newlines.
 
 **mode** takes any data, not just numbers.
-
+___
+### minify_html
+```bash
+minify_html index.html > qa/index.html
+minify_html < index.html > qa/index.html
+```
+Rudimentary HTML minification.  Only the most basic cases are covered:
+* Newline removal;
+* Comment removal;
+* Extraneous spaces between tags: `    < b>  <u> text </u> </b> ==> <b><u> text </u></b>`.
+___
+### minify_css
+```bash
+minify_css styles.css > qa/styles.css
+minify_css < styles.css > qa/styles.css
+```
+Rudimentary CSS minification.  Only the most basic cases are covered:
+* Newline removal;
+* Comment removal;
+* Trailing semicolon removal: `{color:#000;} ==> {color:#000}`;
+* Extraneous spaces between cnotrol characters: `{  color : #fff  } ==> {color:#fff}`.
