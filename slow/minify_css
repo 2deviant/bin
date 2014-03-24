@@ -1,15 +1,17 @@
 #!/bin/bash
 
+# TO DO: do not alter anything within quotes
+
 function minify() {
     # remove newlines
     # remove comments
-    # remove spaces around non-alphanumeric characters,
+    # remove spaces around control characters,
     #   e.g. {  color : #fff  } ==> {color:#fff}
-    # remove reailing semicolons
+    # remove trailing semicolons
     echo "$1" \
-    | tr -d "\n" \
+    | tr "\n" " " \
     | perl -pe "s/\/\*.*?\*\///g" \
-    | perl -pe "s/\s*(\W)\s*/\1/g" \
+    | perl -pe "s/\s*([{}:;<>,])\s*/\1/g" \
     | perl -pe "s/;}/}/g"
 }
 
