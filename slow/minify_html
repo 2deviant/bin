@@ -5,7 +5,7 @@ function minify() {
     # remove comments
     # remove spaces between tags
     echo "$1" \
-    | tr -d "\n" \
+    | tr "\n" " " \
     | perl -pe "s/<!--.*?-->//g" \
     | perl -pe "s/\s*([<>])\s*/\1/g"
 }
@@ -18,7 +18,7 @@ then
 #if not, attempt to use the standard input
 else
     # loop through the lines
-    while read LINE
+    while read -r LINE
     do
         # store the line
         css=${css}${LINE}
