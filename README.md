@@ -98,6 +98,7 @@ Rudimentary HTML minification assuming no `<pre></pre>` blocks.  Only the most b
 * Newline removal;
 * Comment removal;
 * Extraneous spaces between tags: `    < b>  <u> text </u> </b> ==> <b><u> text </u></b>`.
+
 ___
 ### minify_css
 ```bash
