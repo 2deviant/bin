@@ -5,14 +5,16 @@ system=`uname`
 
 # argument must be alphanumeric, e.g. en0, eth1, etc.
 if [[ $1 =~ ^[0-9a-z]+$ ]]; then
+    # unicast MAC must have an even first octet
+    MAC=$(printf "%02x" $(( $((0x`randomhex 1`)) & 0xfe)))`randomhex 5`
     # different commands for different systems
     case "$system" in
         Linux)
-            sudo ifconfig $1 hw ether `randomhex 6`
+            sudo ifconfig $1 hw ether $MAC
             sudo hostname UNKNOWN
         ;;
         Darwin)
-            sudo ifconfig $1    ether `randomhex 6`
+            sudo ifconfig $1    ether $MAC
             sudo scutil --set ComputerName "UNKNOWN"
             sudo scutil --set HostName "UNKNOWN"
             sudo scutil --set LocalHostName "UNKNOWN"
