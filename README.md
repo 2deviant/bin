@@ -94,7 +94,7 @@ ___
 minify_html index.html > qa/index.html
 minify_html < index.html > qa/index.html
 ```
-Rudimentary HTML minification.  Only the most basic cases are covered:
+Rudimentary HTML minification assuming no `<pre></pre>` blocks.  Only the most basic cases are covered:
 * Newline removal;
 * Comment removal;
 * Extraneous spaces between tags: `    < b>  <u> text </u> </b> ==> <b><u> text </u></b>`.
