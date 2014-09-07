@@ -77,17 +77,29 @@ randommac eth1
 Change the MAC address of a given
 interface to a random sequence and the hostname of the machine to **UNKNOWN**.
 ___
-### min, max, add, mean, median, mode
+### min, max, add, mean, median, mode, histogram
 ```bash
 min < numbers.txt
 ls -l | awk '{print $5}' | max
 ls -l | awk '{print $5}' | add
 last | awk '{print $1}' | mode
+last | awk '{print $1}' | histogram
 ```
 Compute the corresponding statistic of a list of numbers taken from the standard
-input.  The numbers can be separated by a mixture of spaces, tabs, and newlines.
+input.  The numbers can be separated by a mixture of spaces, tabs, and newlines. 
 
-**mode** takes any data, not just numbers.
+* **mode** and **histogram** take any data, not just numbers.
+* **histogram** computes the frequency of every space-delimited string, *e.g.*
+```bash
+~/ > last | awk '{print $1}' | histogram
+
+pooh, 2
+shutdown, 7
+root, 6
+wtmp, 1
+reboot, 13
+val, 1618
+```
 ___
 ### minify_html
 ```bash
