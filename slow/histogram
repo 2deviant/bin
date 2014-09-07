@@ -13,7 +13,6 @@ while(<>) {
 # print the frequency table
 foreach my $key (keys $numbers) {
     print "$key, $numbers->{$key}\n"
-
 }
 
 =head1 NAME
