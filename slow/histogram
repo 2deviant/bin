@@ -1,0 +1,40 @@
+#!/usr/bin/perl
+use strict;
+
+# hash
+my $numbers;
+
+# loop until the end of standard input
+while(<>) {
+    # increment the string count
+    ++$numbers->{$_} for split /\s+/;
+}
+
+# print the frequency table
+foreach my $key (keys $numbers) {
+    print "$key, $numbers->{$key}\n"
+
+}
+
+=head1 NAME
+
+histogram - count the number of each string in a file.
+
+=head1 SYNOPSIS
+
+B<histogram> < I<file>
+
+cat I<file> | B<histogram>
+    
+=head1 DESCRIPTION
+
+Computes the string frequency in a list piped in from the
+standard input and separated by spaces, tabs, and/or newlines.
+
+List need not consist of integers, any space-delimited data will do.
+
+=head1 AUTHOR
+
+Val Tenyotkin B<<val@tenyotk.in>>
+
+=cut
