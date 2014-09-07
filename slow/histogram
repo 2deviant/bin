@@ -17,7 +17,7 @@ foreach my $key (keys $numbers) {
 
 =head1 NAME
 
-histogram - count the number of each string in a file.
+histogram - count the frequency of each string in a file.
 
 =head1 SYNOPSIS
 
